@@ -20,8 +20,8 @@ const [list, setList] = useState([
          {list.map((item) => (
           <div key={item.id}>
             <h3>{item.emri}</h3>
-            <p>{item.age}</p>
-            <p>{item.city}</p>
+            <p>Age: {item.age}</p>
+            <p>City: {item.city}</p>
           </div>
          ))}
     </>
