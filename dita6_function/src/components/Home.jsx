@@ -11,13 +11,16 @@ const [list, setList] = useState([
   {id:5, emri:"bekim",age:22, city:"peje"},
 ])
 
-
+const deleteButton=(id)=>{
+  const newList=list.filter(list=>list.id!==id)
+  setList(newList);
+}
 
   return (
     <>
 
     <h1>Home page</h1>
-  <Bloglist list={list} x="Lista e Nxenesve" />
+  <Bloglist list={list} x="Lista e Nxenesve" deleteButton={deleteButton}/>
          
     </>
   )
