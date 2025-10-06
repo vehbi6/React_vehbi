@@ -1,5 +1,4 @@
 import React from 'react'
-import Viewlist from './Viewlist';
 
 
  function Bloglist(props) {
