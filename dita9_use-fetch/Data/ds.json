@@ -1,0 +1,9 @@
+{
+    "list": [
+        {"id":1, "name":"vehbi","age":25, "city":"prishtine"},
+        {"id":2, "name":"arianit","age":30, "city":"gjilan"},
+        {"id":3, "name":"fatlind","age":28, "city":"ferizaj"},
+        {"id":4, "name":"bujar","age":35, "city":"prizren"},
+        {"id":5, "name":"bekim","age":22, "city":"peje"}
+]
+}
