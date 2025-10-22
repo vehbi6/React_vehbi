@@ -1,42 +1,46 @@
-import React, { useEffect, useState } from 'react';
-import Bloglist from './Bloglist.jsx';
+import React, { useState, useEffect, use } from 'react'
+import BlogList from './BlogList.jsx'
 
 function Home() {
-  const [list, setList] = useState([]);
-  const [error, setError] = useState(null); // 1. Add error state
+    const [list, setList] = useState([])
+    const [error, setError] = useState(null);
 
-  useEffect(() => {
-    fetch('http://localhost:1234/listqd')
-      .then(res => {
-        if (!res.ok) {
-          throw new Error('Failed to fetch data'); // 1. Throw error if response is not ok
-        }
-        return res.json();
-      })
-      .then(data => {
-        setList(data);
-        setError(null); // clear error if fetch succeeds
-      })
-      .catch(err => {
-        setError(err.message); // 2. Set error message
-      });
-  }, []);
-
-  const deleteButton = (id) => {
-    const newList = list.filter(item => item.id !== id);
-    setList(newList);
-  };
-
+      useEffect(() => {
+          fetch('http://localhost:800/list')
+          .then(res => {
+              return res.json()
+          })
+          .then(data => {
+              setList(data)
+          })
+          .catch(err => {
+              setError(err.message);
+          })
+      }, []);
+      
+      //Nje funksion mund te perdoret edhe si props
+      //Ketu e kemi krijuar nje funksion qe do ta perdorim permes props, qe e kemi krijuar si button ne komponentin BlogList
+      const deleteButton = (id) => {
+          //const duke e perdorur per ta fshire nje element brenda array duke e perdorur id e seciles vlere.
+          const newList = list.filter(list => list.id !== id);
+          
+          //ndryshimi i array duke e perdorur metoden qe e kemi krijuar
+          setList(newList);
+      }
   return (
     <>
-      <h1>Home page</h1>
-
-      {/* 3. Show error if it exists */}
-      {error && <div style={{ color: 'red' }}>Error: {error}</div>}
-
-      <Bloglist list={list} x="Lista e Nxenesve" deleteButton={deleteButton} />
+        {/* {list.map((item) => (
+          <div key={item.id}>
+            <h2>{item.name}</h2>  
+            <p>Age: {item.age}</p>
+            <p>City: {item.city}</p>
+          </div>
+        ))} */}
+        
+        <BlogList  list={list} x = "Lista e Nxenesve" deleteButton={deleteButton} />
+        {error && <div>{error}</div>}
     </>
-  );
+  )
 }
 
-export default Home;
+export default Home
